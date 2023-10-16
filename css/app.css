@@ -1,0 +1,96 @@
+:root {
+    --primary: #dc06e76e;
+    --secondary: #b019f0d1;
+    --title: #72048e;
+  }
+
+  nav {
+    background: var(--primary);
+    border-bottom: 10px solid var(--secondary);
+  }
+
+  nav p {
+    float: left;
+    margin:  0 0 0 0;
+    font-weight: bold;
+    color: #000000;
+  }
+
+  nav ul {
+    float: right;
+  }
+
+  nav ul a {
+    color: #000000;
+  }
+  
+  .movies {
+    margin-top: 20px;
+  }
+
+  .card-panel.movie {
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 1px 3px rgba(90, 90, 90, 0.1);
+    display: grid;
+    grid-template-columns: 2fr 6fr 1fr;
+    grid-template-areas: "image details delete";
+    position: relative;
+  }
+
+  .movie img {
+    grid-area: image;
+    max-width: 60px;
+  }
+
+  .movie-details {
+    grid-area: details;
+    margin-top: 6px;
+  }
+
+  .movie-delete {
+    grid-area: delete;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+  }
+
+  .movie-delete i {
+    font-size: 18px;
+  }
+
+  .movie-title {
+    font-weight: bold;
+  }
+
+  .movie-ingredients {
+    font-size: 0.8em;
+  }
+  
+  .add-btn {
+    background: var(--title) !important;
+  }
+
+  input {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
+
+  .side-form button {
+    background: var(--title);
+    box-shadow: 1px 1px 3px rgba(90, 90, 90, 0.2);
+  }
+  
+  form .input-field {
+    margin-top: 30px;
+  }
+
+  .telephone-text {
+    margin-top: 10px;
+    margin-left: 35px;
+  }
+
+  .email-text {
+    margin-top: 10px;
+    margin-left: 35px;
+  }
