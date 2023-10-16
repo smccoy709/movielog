@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="/css/app.css">
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <title>Movie Log</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper container">
+            <p>Movie Log</p>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Tasks -->
+
+    <div class="movies container grey-text text-darken-3">
+        <div class="card-panel movie purple lighten-4 row">
+            <img src="/img/clapboard.png" class="responsive-img materialboxed" alt="Movie" />
+            <div class="movie-detail">
+                <div class="movie-title">Titanic</div>
+                <div class="movie-description">James Cameron's "Titanic" is an epic, action-packed romance
+                    set against the ill-fated maiden voyage of the R.M.S. Titanic; the pride and joy of the
+                    White Star Line and, at the time, the largest moving object ever built. She was the most
+                    luxurious liner of her era -- the "ship of dreams" -- which ultimately carried over 1,500
+                    people to their death in the ice cold waters of the North Atlantic in the early hours of
+                    April 15, 1912.
+                </div>
+            </div>
+            <div class="movie-delete">
+                <i class="material-icons">delete_outline</i>
+            </div>
+        </div>
+        <div class="card-panel movie purple lighten-4 row">
+            <img src="/img/clapboard.png" class="responsive-img materialboxed" alt="Movie" />
+            <div class="movie-detail">
+                <div class="movie-title">Halloween</div>
+                <div class="movie-description">On a cold Halloween night in 1963, six year old Michael Myers
+                    brutally murdered his 17-year-old sister, Judith. He was sentenced and locked away for 15
+                    years. But on October 30, 1978, while being transferred for a court date, a 21-year-old Michael
+                    Myers steals a car and escapes Smith's Grove. He returns to his quiet hometown of Haddonfield,
+                    Illinois, where he looks for his next victims.
+                </div>
+            </div>
+            <div class="movie-delete">
+                <i class="material-icons">delete_outline</i>
+            </div>
+        </div>
+    </div>
+
+    <div class="center">
+        <a class="btn-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+
+    <div id="side-form" class="sidenav side-form">
+        <form class="add-movie container section">
+            <h6>New Movie</h6>
+            <div class="divider"></div>
+                <div class="input-field">
+                    <input type="text" placeholder="Enter Movie Title" id="movie" class="validate">
+                    <label for="title">Movie Title</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" placeholder="Enter Movie Description" id="description" class="validate">
+                    <label for="description">Movie Description</label>
+                </div>
+
+                <div class="input-field center">
+                    <button class="btn-small">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="/js/ui.js"></script>
+</body>
+</html>
