@@ -24,59 +24,15 @@
         </div>
     </nav>
 
-    <!-- Tasks -->
-
-    <div class="movies container grey-text text-darken-3">
-        <div class="card-panel movie purple lighten-4 row">
-            <img src="/img/clapboard.png" class="responsive-img materialboxed" alt="Movie" />
-            <div class="movie-detail">
-                <div class="movie-title">Titanic</div>
-                <div class="movie-description">James Cameron's "Titanic" is an epic, action-packed romance
-                    set against the ill-fated maiden voyage of the R.M.S. Titanic; the pride and joy of the
-                    White Star Line and, at the time, the largest moving object ever built. She was the most
-                    luxurious liner of her era -- the "ship of dreams" -- which ultimately carried over 1,500
-                    people to their death in the ice cold waters of the North Atlantic in the early hours of
-                    April 15, 1912.
-                </div>
-            </div>
-            <div class="movie-delete">
-                <i class="material-icons">delete_outline</i>
-            </div>
-        </div>
-        <div class="card-panel movie purple lighten-4 row">
-            <img src="/img/clapboard.png" class="responsive-img materialboxed" alt="Movie" />
-            <div class="movie-detail">
-                <div class="movie-title">Halloween</div>
-                <div class="movie-description">On a cold Halloween night in 1963, six year old Michael Myers
-                    brutally murdered his 17-year-old sister, Judith. He was sentenced and locked away for 15
-                    years. But on October 30, 1978, while being transferred for a court date, a 21-year-old Michael
-                    Myers steals a car and escapes Smith's Grove. He returns to his quiet hometown of Haddonfield,
-                    Illinois, where he looks for his next victims.
-                </div>
-            </div>
-            <div class="movie-delete">
-                <i class="material-icons">delete_outline</i>
-            </div>
-        </div>
-    </div>
-
-    <div class="center">
-        <a class="btn-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
-            <i class="material-icons">add</i>
-        </a>
-    </div>
+    <!-- Movies -->
 
     <div id="side-form" class="sidenav side-form">
-        <form class="add-movie container section">
+        <form id="add-movie-form" class="add-movie container section">
             <h6>New Movie</h6>
             <div class="divider"></div>
                 <div class="input-field">
-                    <input type="text" placeholder="Enter Movie Title" id="movie" class="validate">
-                    <label for="title">Movie Title</label>
-                </div>
-                <div class="input-field">
-                    <input type="text" placeholder="Enter Movie Description" id="description" class="validate">
-                    <label for="description">Movie Description</label>
+                    <input type="text" placeholder="Enter Movie Title" id="movie" name="movie" class="validate">
+                    <label for="movie">Movie Title</label>
                 </div>
 
                 <div class="input-field center">
@@ -86,6 +42,96 @@
         </form>
     </div>
 
+    <div class="movies container grey-text text-darken-3">
+          <ul id="movie-list" class="card-panel movie purple lighten-4 row center"></ul>
+      </div>
+
+      <div class="center">
+        <a class="btn-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc, query, where, updateDoc } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCCaBC2ZKBaKxGZSchiNeYexfaKeTZcPk0",
+            authDomain: "movielog-c6ea1.firebaseapp.com",
+            projectId: "movielog-c6ea1",
+            storageBucket: "movielog-c6ea1.appspot.com",
+            messagingSenderId: "179697430224",
+            appId: "1:179697430224:web:278ffa1bb63cb34510f8d5",
+            measurementId: "G-8Y6WB7FS40"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function getMovies(db) {
+            const moviesCol = collection(db, "movielog");
+            const movieSnapshot = await getDocs(moviesCol);
+            const movieList = movieSnapshot.docs.map((doc) => doc.data());
+            return movieList;
+        }
+
+        const movieList = document.querySelector('#movie-list');
+        const form = document.querySelector('#add-movie-form')
+
+        function renderMovies(dc) {
+            let li = document.createElement("li");
+            let movie = document.createElement("span");
+            let cross = document.createElement('div');
+
+            li.setAttribute('data-id', dc.id);
+            movie.textContent = dc.data().movie;
+
+            li.appendChild(movie);
+
+            movieList.appendChild(li);
+
+            cross.addEventListener('click', (e) => {
+                e.stopPropagation();
+                let id = e.target.parentElement.getAttribute('data-id');
+                deleteDoc(doc(db, "movielog", id))
+            })
+        }
+
+        const movies = getDocs(collection(db, "movielog")).then((snapshot) => {
+            snapshot.forEach((doc) => {
+                renderMovies(doc)
+            })
+        })
+
+        const q = query(collection(db, "movielog"), where("movie", "==", "Titanic"));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            console.log(doc.id, "=>", doc.data())
+        })
+
+        const upDoc = doc(db, "movielog", "Fhq361mXVgBR8ebc8xhS");
+
+        updateDoc(upDoc, {
+            name: "Friday the 13th"
+        })
+
+        form.addEventListener(('submit'), (e) => {
+            e.preventDefault();
+            const docRef = addDoc(collection(db, "movielog"), {
+                movie: form.movie.value,
+            })
+        })
+    </script>
+    <script src="/js/app.js"></script>
     <script type="text/javascript" src="/js/ui.js"></script>
 </body>
 </html>
