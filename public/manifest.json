@@ -1,0 +1,20 @@
+{
+    "name":  "Movie Log",
+    "short_name":  "ML",
+    "description":  "Manage the movies you have watched or would like to watch in the future",
+    "start_url":  "/public/index.html",
+    "scope":  ".",
+    "display":  "standalone",
+    "orientation":  "portrait-primary",
+    "background_color":  "#FFE9D2",
+    "theme_color":  "#FFE1C4",
+    "dir":  "ltr",
+    "lang":  "en-US",
+    "icons": [
+        {
+            "src":  "/img/clapboard.png",
+            "type":  "img/png",
+            "sizes":  "75x75"
+        }
+    ]
+}
