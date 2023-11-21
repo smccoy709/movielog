@@ -45,15 +45,14 @@ const renderMovie = (data, id) => {
             <div class="movie-delete">
                 <i class="material-icons" data-id ="${id}">delete_outline</i>
             </div>
-        </div>
-  `;
+        </div>`;
 
   movies.innerHTML += html;
 };
 
 //remove movie from DOM
 const removeMovie = (id) => {
-  const movie = document.querySelector(`.movie[data-id =${id}]`);
+  const movie = document.querySelector(`.movie[data-id ='${id}']`);
   movie.remove();
 };
 
