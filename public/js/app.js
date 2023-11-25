@@ -1,7 +1,5 @@
-// Does browser support service workers?
-
 if ("serviceWorker" in navigator) {
-    // Then register our service worker
+    // Register our service worker
     window.addEventListener("load", () => {
         navigator.serviceWorker.register("/sw.js").then((reg) => {
             // Display a success message
@@ -12,7 +10,5 @@ if ("serviceWorker" in navigator) {
         });
     });
 } else {
-    // Doesn't support service workers
-    // Or if the app isn't served over a TLS connection (HTTPS)
     console.log('Service worker is not available!');
 }

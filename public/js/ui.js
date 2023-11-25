@@ -1,4 +1,3 @@
-// setup materialize components
 document.addEventListener("DOMContentLoaded", function () {
   var modals = document.querySelectorAll(".modal");
   M.Modal.init(modals);
@@ -26,9 +25,6 @@ const setupUI = (user) => {
 const movies = document.querySelector(".movies");
 
 document.addEventListener("DOMContentLoaded", function () {
-  //Nav Menu
-  const menus = document.querySelectorAll(".side-menu");
-  M.Sidenav.init(menus, { edge: "right" });
   // Add Movies
   const forms = document.querySelectorAll(".side-form");
   M.Sidenav.init(forms, { edge: "left" });
@@ -55,8 +51,3 @@ const removeMovie = (id) => {
   const movie = document.querySelector(`.movie[data-id ='${id}']`);
   movie.remove();
 };
-
-//document.addEventListener("DOMContentLoaded", function(){
-//    const forms = document.querySelectorAll(".side-form");
-//    M.Sidenav.init(forms, { edge:  "left" });
-//})
