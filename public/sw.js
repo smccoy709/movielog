@@ -45,7 +45,6 @@ self.addEventListener("activate", function (event) {
     })
   );
 });
-//comment
 self.addEventListener("fetch", function (event) {
   event.respondWith(
     caches
