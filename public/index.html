@@ -23,8 +23,8 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="logged-in"><a href="#" class="waves-effect modal-trigger" data-target="modal-account">Account</a></li>
-                <li class="logged-in"><a href="#" class="waves-effect modal-trigger" data-target="modal-signup">Sign up</a></li>
-                <li class="logged-in"><a href="#" class="waves-effect modal-trigger" data-target="modal-login">Login</a></li>
+                <li class="logged-out"><a href="#" class="waves-effect modal-trigger" data-target="modal-signup">Sign up</a></li>
+                <li class="logged-out"><a href="#" class="waves-effect modal-trigger" data-target="modal-login">Login</a></li>
                 <li class="logged-in"><a href="#" class="waves-effect" id="logout">Logout</a></li>
             </ul>
         </div>
@@ -60,7 +60,7 @@
     </div>
     </form>
 
-    <!-- SIGN UP MODAL -->
+    <!-- Sign Up Modal -->
     <div id="modal-signup" class="modal">
         <div class="modal-content">
             <h4>Sign up</h4><br />
@@ -77,7 +77,7 @@
             </form>
         </div>
     </div>
-    <!-- LOGIN MODAL -->
+    <!-- Login Modal -->
     <div id="modal-login" class="modal">
         <div class="modal-content">
             <h4>Login</h4><br />
@@ -95,7 +95,7 @@
         </div>
     </div>
 
-    <!-- ACCOUNT MODAL -->
+    <!-- Account Modal -->
     <div id="modal-account" class="modal">
         <div class="modal-content center-align">
             <h4>Account details</h4><br />
@@ -105,10 +105,10 @@
     </div>
 
 
-    <script src="/public/js/ui.js"></script>
-    <script src="/public/js/app.js"></script>
-    <script type="module" src="/js/auth.js"></script>
-    <script type="module" src="/public/js/db.js"></script>
+    <script src="./js/ui.js"></script>
+    <script src="./js/app.js"></script>
+    <script type="module" src="./js/auth.js"></script>
+    <script type="module" src="./js/db.js"></script>
 </body>
 
 </html>
