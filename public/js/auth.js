@@ -23,9 +23,8 @@ const auth = getAuth(app);
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("User log in: ", user.email);
-    getMovies(db).then((snapshot) => {
-      setupMovies(snapshot);
-    });
+    //getMovies(db).then((snapshot) => {
+      //setupMovies(snapshot);
     setupUI(user);
     const form = document.querySelector("form");
     form.addEventListener("submit", (event) => {
@@ -40,7 +39,7 @@ onAuthStateChanged(auth, (user) => {
     });
   } else {
     setupUI();
-    setupMovies();
+    //setupMovies();
   }
 });
 
