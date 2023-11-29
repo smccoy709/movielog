@@ -2,7 +2,7 @@
     "name":  "Movie Log",
     "short_name":  "ML",
     "description":  "Manage the movies you have watched or would like to watch in the future",
-    "start_url":  "/public/index.html",
+    "start_url":  "./index.html",
     "scope":  ".",
     "display":  "standalone",
     "orientation":  "portrait-primary",
@@ -12,9 +12,19 @@
     "lang":  "en-US",
     "icons": [
         {
-            "src":  "/img/clapboard.png",
+            "src":  "./img/clapboard-48x48.png",
             "type":  "img/png",
-            "sizes":  "75x75"
+            "sizes":  "48x48"
+        },
+        {
+            "src":  "./img/clapboard-72x72.png",
+            "type":  "img/png",
+            "sizes":  "72x72"
+        },
+        {
+            "src":  "./img/clapboard.png",
+            "type":  "img/png",
+            "sizes":  "614x460"
         }
     ]
 }
