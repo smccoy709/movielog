@@ -3,14 +3,14 @@ const dynamicCache = "Dynamic-cache-v7";
 
 const assets = [
   "/",
-  "/public/index.html",
-  "/public/fallback.html",
-  "/public/js/app.js",
-  "/public/js/ui.js",
-  "/public/js/materialize.min.js",
-  "/public/css/materialize.min.css",
-  "/public/css/app.css",
-  "/public/img/clapboard.png",
+  "./index.html",
+  "./fallback.html",
+  "./js/app.js",
+  "./js/ui.js",
+  "./js/materialize.min.js",
+  "./css/materialize.min.css",
+  "./css/app.css",
+  "./img/clapboard.png",
   "https://fonts.googleapis.com/icon?family=Material+Icons",
 ];
 
@@ -61,6 +61,6 @@ self.addEventListener("fetch", function (event) {
           })
         );
       })
-      .catch(() => caches.match("/public/fallback.html"))
+      .catch(() => caches.match("./fallback.html"))
   );
 });
