@@ -13,27 +13,27 @@
     "icons": [
         {
             "src":  "./img/clapboard-48x48.png",
-            "type":  "img/png",
+            "type":  "image/png",
             "sizes":  "48x48"
         },
         {
             "src":  "./img/clapboard-72x72.png",
-            "type":  "img/png",
+            "type":  "image/png",
             "sizes":  "72x72"
         },
         {
             "src":  "./img/clapboard-96x96.png",
-            "type":  "img/png",
+            "type":  "image/png",
             "sizes":  "96x96"
         },
         {
             "src":  "./img/clapboard-128x128.png",
-            "type":  "img/png",
+            "type":  "image/png",
             "sizes":  "128x128"
         },
         {
             "src":  "./img/clapboard-144x144.png",
-            "type":  "img/png",
+            "type":  "image/png",
             "sizes":  "144x144"
         }
     ]
