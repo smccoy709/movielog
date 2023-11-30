@@ -22,9 +22,19 @@
             "sizes":  "72x72"
         },
         {
-            "src":  "./img/clapboard.png",
+            "src":  "./img/clapboard-96x96.png",
             "type":  "img/png",
-            "sizes":  "614x460"
+            "sizes":  "72x72"
+        },
+        {
+            "src":  "./img/clapboard-128x128.png",
+            "type":  "img/png",
+            "sizes":  "72x72"
+        },
+        {
+            "src":  "./img/clapboard-144x144.png",
+            "type":  "img/png",
+            "sizes":  "72x72"
         }
     ]
 }
