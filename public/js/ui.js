@@ -7,22 +7,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const movie = document.querySelector(".movie");
+const movies = document.querySelector(".movies");
 const loggedOutLinks = document.querySelectorAll(".logged-out");
 const loggedInLinks = document.querySelectorAll(".logged-in");
 
 const setupUI = (user) => {
   if (user) {
     //toggle UI elements
-    loggedInLinks.forEach((item) => (item.style.display = "block"));
     loggedOutLinks.forEach((item) => (item.style.display = "none"));
+    loggedInLinks.forEach((item) => (item.style.display = "block"));
   } else {
     //toggle UI elements
-    loggedInLinks.forEach((item) => (item.style.display = "none"));
     loggedOutLinks.forEach((item) => (item.style.display = "block"));
+    loggedInLinks.forEach((item) => (item.style.display = "none"));
   }
 };
-
-const movies = document.querySelector(".movies");
 
 document.addEventListener("DOMContentLoaded", function () {
   // Add Movies
@@ -30,10 +29,32 @@ document.addEventListener("DOMContentLoaded", function () {
   M.Sidenav.init(forms, { edge: "left" });
 });
 
+//Populate data
+const setupMovies = (data) => {
+  let html = "";
+  data.forEach((doc) => {
+    const movie = doc.data();
+    const li = `    
+    <div class="card-panel movie purple lighten-4 row" data-id ="${movie.id}">
+    <img src="./img/clapboard.png" class="responsive-img materialboxed" alt="">
+    <div class="movie-detail">
+        <div class="movie-title">${movie.title}</div>
+        <div class="movie-synopsis">${movie.synopsis}</div>
+    </div>
+    <div class="movie-delete">
+        <i class="material-icons" data-id ="${movie.id}">delete_outline</i>
+    </div>
+</div>`;
+    html += li;
+  });
+
+  movies.innerHTML = html;
+};
+
 const renderMovie = (data, id) => {
   const html = `
   <div class="card-panel movie purple lighten-4 row" data-id ="${id}">
-            <img src="/public/img/clapboard.png" class="responsive-img materialboxed" alt="">
+            <img src="./img/clapboard.png" class="responsive-img materialboxed" alt="">
             <div class="movie-detail">
                 <div class="movie-title">${data.title}</div>
                 <div class="movie-synopsis">${data.synopsis}</div>
