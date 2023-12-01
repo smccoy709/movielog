@@ -77,3 +77,13 @@ input {
 form .input-field {
   margin-top: 30px;
 }
+
+footer
+{
+	font-size:75%;
+	font-style:italic;
+	text-align:center;
+	font-family: Georgia, "Times New Roman", serif;
+	padding:2em;
+	background-color:#FFFFFF;
+}
