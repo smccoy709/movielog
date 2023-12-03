@@ -51,6 +51,11 @@
             "src":  "./img/clapboard-384x384.png",
             "type":  "image/png",
             "sizes":  "384x384"
+        },
+        {
+            "src":  "./img/clapboard-512x512.png",
+            "type":  "image/png",
+            "sizes":  "512x512"
         }
     ]
 }
