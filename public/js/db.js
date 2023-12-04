@@ -51,7 +51,7 @@ enableIndexedDbPersistence(db).catch((err) => {
   }
 });
 
-const unsub = onSnapshot(collection(db, "movielog"), (doc) => {
+onSnapshot(collection(db, "movielog"), (doc) => {
   //   console.log(doc.docChanges());
   doc.docChanges().forEach((change) => {
     // console.log(change, change.doc.data(), change.doc.id);
@@ -79,8 +79,19 @@ form.addEventListener("submit", (event) => {
   form.synopsis.value = "";
 });*/
 
+
+//delete movie
+const movieContainer = document.querySelector(".movies");
+movieContainer.addEventListener("click", (event) => {
+  if (event.target.tagName === "I") {
+    const id = event.target.getAttribute("data-id");
+    deleteDoc(doc(db, "movielog", id));
+  }
+});
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
+    console.log("Test");
     console.log("User log in: ", user.email);
     getMovies(db).then((snapshot) => {
     setupMovies(snapshot);
@@ -100,14 +111,5 @@ onAuthStateChanged(auth, (user) => {
   } else {
     setupUI();
     setupMovies([]);
-  }
-});
-
-//delete movie
-const movieContainer = document.querySelector(".movies");
-movieContainer.addEventListener("click", (event) => {
-  if (event.target.tagName === "I") {
-    const id = event.target.getAttribute("data-id");
-    deleteDoc(doc(db, "movielog", id));
   }
 });

@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const movie = document.querySelector(".movie");
-const movies = document.querySelector(".movies");
 const loggedOutLinks = document.querySelectorAll(".logged-out");
 const loggedInLinks = document.querySelectorAll(".logged-in");
 
@@ -23,6 +22,8 @@ const setupUI = (user) => {
   }
 };
 
+const movies = document.querySelector(".movies");
+
 document.addEventListener("DOMContentLoaded", function () {
   // Add Movies
   const forms = document.querySelectorAll(".side-form");
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Populate data
 const setupMovies = (data) => {
+  console.log(data);
   let html = "";
   data.forEach((doc) => {
     const movie = doc.data();
