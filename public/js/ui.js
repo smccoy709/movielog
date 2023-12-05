@@ -32,10 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Populate data
 const setupMovies = (data) => {
-  console.log(data);
   let html = "";
   data.forEach((doc) => {
-    const movie = doc.data();
+    //const movie = doc.data();
     const li = `    
     <div class="card-panel movie purple lighten-4 row" data-id ="${movie.id}">
     <img src="./img/clapboard.png" class="responsive-img materialboxed" alt="">
