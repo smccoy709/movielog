@@ -69,11 +69,3 @@ self.addEventListener("fetch", function (event) {
       .catch(() => caches.match("./fallback.html"))
   );
 });
-
-self.addEventListener('push', (event) => {
-  let notification = event.data.json();
-  self.registration.showNotification(
-    notification.title, 
-    notification.options
-  );
-});
