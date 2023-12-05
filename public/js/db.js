@@ -30,7 +30,7 @@ import {
         };
 
 // Initialize Firebase
-/*const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
@@ -77,7 +77,7 @@ form.addEventListener("submit", (event) => {
   }).catch((error) => console.log(error));
   form.title.value = "";
   form.synopsis.value = "";
-});
+});*/
 
 
 //delete movie
@@ -111,164 +111,4 @@ onAuthStateChanged(auth, (user) => {
     setupUI();
     setupMovies([]);
   }
-
-  // Auth state changes
-
-onAuthStateChanged(auth, (user) => {
-
-  if (user) {
-
-    // User is signed in, call getMovies
-
-    console.log("User log in: ", user.email);
-
-    getMovies().then((movieList) => {
-
-      setupMovies(movieList); // Ensure this function renders the movies to the UI
-
-    });
-
-    setupUI(user); // Setup UI for logged in user
-
-    const form = document.querySelector("form");
-
-    form.addEventListener('submit', (event) => {
-
-      event.preventDefault();
-
-      addDoc(collection(db, "movielog"), {
-
-        title: form.title.value,
-
-        synopsis: form.synopsis.value,
-
-      }).then(() => {
-
-        // Handle what happens after a successful addition
-
-        console.log('Movie added!');
-
-      }).catch((error) => console.log(error));
-
-      form.title.value = "";
-
-      form.synopsis.value = "";
-
-    });
-
-  } else {
-
-    // User is signed out, clear the movies
-
-    console.log("User is not logged in.");
-
-    setupUI(); // Adjust UI for logged out state
-
-    setupMovies([]); // Clear the movies from the UI
-
-  }
-});*/
-
-
-// Initialize Firebase
-
-
-const app = initializeApp(firebaseConfig);
-
-const db = getFirestore(app);
-
-const auth = getAuth(app);
-
- 
-
-// Function to get movies (should only be called when user is authenticated)
-
-async function getMovies() {
-
-  const moviesCol = collection(db, "movielog");
-
-  const movieSnapshot = await getDocs(moviesCol);
-
-  const movieList = movieSnapshot.docs.map((doc) => doc.data()); // Assuming you want the data, not the doc itself
-
-  return movieList;
-
-}
-
- 
-
-// Enable offline data persistence
-
-enableIndexedDbPersistence(db).catch((err) => {
-
-  if (err.code == "failed-precondition") {
-
-    console.log("Persistence failed. Only one tab can be active at a time.");
-
-  } else if (err.code == "unimplemented") {
-
-    console.log("The current browser does not support all of the features required to enable persistence");
-
-  }
-
-});
-
- 
-
-// Auth state changes
-
-onAuthStateChanged(auth, (user) => {
-
-  if (user) {
-
-    // User is signed in, call getMovies
-
-    console.log("User log in: ", user.email);
-
-    getMovies().then((movieList) => {
-
-    setupMovies(movieList); // Ensure this function renders the movies to the UI
-
-    });
-
-    setupUI(user); // Setup UI for logged in user
-
-    const form = document.querySelector("form");
-
-    form.addEventListener('submit', (event) => {
-
-      event.preventDefault();
-
-      addDoc(collection(db, "movielog"), {
-
-        title: form.title.value,
-
-        synopsis: form.synopsis.value,
-
-      }).then(() => {
-
-        // Handle what happens after a successful addition
-
-        console.log('Movie added!');
-
-      }).catch((error) => console.log(error));
-
-      form.title.value = "";
-
-      form.synopsis.value = "";
-
-    });
-
-  } else {
-
-    // User is signed out, clear the movies
-
-    console.log("User is not logged in.");
-
-    setupUI(); // Adjust UI for logged out state
-
-    setupMovies([]); // Clear the movies from the UI
-
-  }
-
 });
