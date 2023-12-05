@@ -104,24 +104,11 @@
         </div>
     </div>
   </div>
-
-                  <!-- div to display the generated registration token -->
-                  <div id="token_div" style="display: none;">
-                    <h4>Registration Token</h4>
-                    <p id="token" style="word-break: break-all;"></p>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                            onclick="deleteToken()">Delete Token</button>
-                  </div>
-                  <!-- div to display the UI to allow the request for permission to
-                       notify the user. This is shown if the app has not yet been
-                       granted permission to notify. -->
-                  <div id="permission_div" style="display: flex;">
-                    <p id="token"></p>
-                    <button class="btn purple darken-2"
-                            onclick="requestPermission()">Do you want to receive push notifications?</button>
-                  </div>
-                  <!-- div to display messages received by this app. -->
-                  <div id="messages"></div>
+<script>
+  Notification.requestPermission(function(status) {
+console.log('Notification permission status:', status);
+});
+    </script>
 
 <script src="./js/ui.js"></script>
 <script src="./js/app.js"></script>
