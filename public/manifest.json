@@ -11,6 +11,11 @@
     "dir":  "ltr",
     "lang":  "en-US",
     "gcm_sender_id": "37578670623",
+    "permissions": {
+        "desktop-notification": {
+          "description": "Needed for creating system notifications."
+        }
+      },
     "icons": [
         {
             "src":  "./img/clapboard-48x48.png",

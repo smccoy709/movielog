@@ -1,5 +1,8 @@
-importScripts('https://www.gstatic.com/firebasejs/9.2.0/firebase-app-compat.js');
-importScripts('https://www.gstatic.com/firebasejs/9.2.0/firebase-messaging-compat.js');
+// Give the service worker access to Firebase Messaging.
+// Note that you can only use Firebase Messaging here, other Firebase libraries
+// are not available in the service worker.
+importScripts('https://www.gstatic.com/firebasejs/3.5.0/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/3.5.0/firebase-messaging.js');
 const staticCache = "Static-cache-v16";
 const dynamicCache = "Dynamic-cache-v10";
 
@@ -64,5 +67,13 @@ self.addEventListener("fetch", function (event) {
         );
       })
       .catch(() => caches.match("./fallback.html"))
+  );
+});
+
+self.addEventListener('push', (event) => {
+  let notification = event.data.json();
+  self.registration.showNotification(
+    notification.title, 
+    notification.options
   );
 });
