@@ -3,8 +3,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signOut,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
+  signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/9.3.0/firebase-auth.js";
 
 const firebaseConfig = {
