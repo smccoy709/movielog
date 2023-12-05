@@ -1,3 +1,9 @@
+import { initializeApp } from "firebase/app";
+import { getMessaging } from "firebase/messaging";
+
+const app = initializeApp(firebaseConfig);
+const messaging = getMessaging(app);
+
 firebase.initializeApp({
     apiKey: "AIzaSyCjLtV7oESaAFUg4o-mcHWlj9I-GUapu_M",
     authDomain: "movielog-d5a7d.firebaseapp.com",
@@ -8,26 +14,52 @@ firebase.initializeApp({
     measurementId: "G-QWQQXEVX94"
  });
 
- // Retrieve an instance of Firebase Messaging so that it can handle background
- // messages.
- const messaging = firebase.messaging();
+if (Notification.permission !== "granted") {
 
-// If you would like to customize notifications that are received in the
-// background (Web app is closed or not in browser focus) then you should
-// implement this optional method.
-// Keep in mind that FCM will still show notification messages automatically 
-// and you should use data messages for custom notifications.
-// For more info see: 
-// https://firebase.google.com/docs/cloud-messaging/concept-options
-messaging.onBackgroundMessage(function(payload) {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  // Customize notification here
-  const notificationTitle = 'Background Message Title';
-  const notificationOptions = {
-    body: 'Background Message body.',
-    icon: './img/clapboard.png'
-  };
-
-  self.registration.showNotification(notificationTitle,
-    notificationOptions);
-});
+    Notification.requestPermission();
+    
+    }
+    
+    
+    
+    // 2. Display Notifications: Once you have permission, you can show notifications. Here’s a function to do just that:
+    
+    function showNotification(title, body, icon) {
+    
+    if (Notification.permission !== "granted") {
+    
+      return; // Stops here if no permission
+    
+    }
+    
+    
+    
+    const notification = new Notification(title, {
+    
+      body: body,
+    
+      icon: icon
+    
+    });
+    
+    }
+    
+    
+    
+    // 3.Database Changes: Listen for any changes in your database where notifications are stored. This example uses Firebase:
+    
+    const database = firebase.database();
+    
+    
+    
+    database.ref('notifications').on('value', snapshot => {
+    
+    const notificationData = snapshot.val();
+    
+    const { title, body, icon } = notificationData;
+    
+    showNotification(title, body, icon);
+    
+    });
+    
+    showNotification('New Message!', 'You have a new message from Sarah.', '/assets/icon.png');
