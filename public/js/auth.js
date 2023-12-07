@@ -19,18 +19,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-//signup
+// signup
 const signupForm = document.querySelector("#signup-form");
-// const auth = getAuth(app);
-signupForm.addEventListener("submit", (e) => {
+  signupForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  //get user info
+  // get user info
   const email = signupForm["signup-email"].value;
   const password = signupForm["signup-password"].value;
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
+      // signed in
       const user = userCredential.user;
       console.log(user);
       const modal = document.querySelector("#modal-signup");
@@ -40,24 +39,23 @@ signupForm.addEventListener("submit", (e) => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      // ..
     });
 });
 
-//logout
+// logout
 const logout = document.querySelector("#logout");
 logout.addEventListener("click", (e) => {
   e.preventDefault();
   signOut(auth)
     .then(() => {
-      // console.log("user has signed out");
+      console.log("User has signed out");
     })
     .catch((error) => {
-      // An error happened.
+      console.log(error);
     });
 });
 
-//login
+// login
 const loginForm = document.querySelector("#login-form");
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -65,14 +63,13 @@ loginForm.addEventListener("submit", (e) => {
   const password = loginForm["login-password"].value;
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
+      // signed in
       const user = userCredential.user;
-      // console.log(user);
-      //close the login modal and reset the form
+      console.log(user);
+      // close the login modal and reset the form
       const modal = document.querySelector("#modal-login");
       M.Modal.getInstance(modal).close();
       loginForm.reset();
-      // ...
     })
     .catch((error) => {
       const errorCode = error.code;
