@@ -15,33 +15,18 @@ firebase.initializeApp({
  });
 
 if (Notification.permission !== "granted") {
-
     Notification.requestPermission();
-    
-    }
-    
-    
-    
-    // 2. Display Notifications: Once you have permission, you can show notifications. Here’s a function to do just that:
-    
+}    
+    // 2. Display Notifications: Once you have permission, you can show notifications. Here’s a function to do just that:   
     function showNotification(title, body, icon) {
-    
     if (Notification.permission !== "granted") {
-    
       return; // Stops here if no permission
-    
     }
-    
-    
-    
+
     const notification = new Notification(title, {
-    
       body: body,
-    
       icon: icon
-    
     });
-    
     }
     
     
