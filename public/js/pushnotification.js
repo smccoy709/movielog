@@ -16,8 +16,7 @@ firebase.initializeApp({
 
 if (Notification.permission !== "granted") {
     Notification.requestPermission();
-}    
-    // 2. Display Notifications: Once you have permission, you can show notifications. Here’s a function to do just that:   
+}
     function showNotification(title, body, icon) {
     if (Notification.permission !== "granted") {
       return; // Stops here if no permission
@@ -29,22 +28,10 @@ if (Notification.permission !== "granted") {
     });
     }
     
-    
-    
-    // 3.Database Changes: Listen for any changes in your database where notifications are stored. This example uses Firebase:
-    
     const database = firebase.database();
-    
-    
-    
     database.ref('notifications').on('value', snapshot => {
-    
-    const notificationData = snapshot.val();
-    
-    const { title, body, icon } = notificationData;
-    
-    showNotification(title, body, icon);
-    
-    });
-    
-    showNotification('New Message!', 'You have a new message from Sarah.', '/assets/icon.png');
+      const notificationData = snapshot.val();
+      const { title, body, icon } = notificationData;
+      showNotification(title, body, icon);
+  });
+  showNotification('New Message!', 'You have a new message!', './img/clapboard.png');
